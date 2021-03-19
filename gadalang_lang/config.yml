@@ -1,0 +1,5 @@
+runner: pymodule
+nodes:
+  json:
+    module: gadalang_lang.nodes
+    entrypoint: _json
