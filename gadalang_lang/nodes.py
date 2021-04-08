@@ -4,7 +4,6 @@ import asyncio
 import json
 import binaryiotools
 import pygada_runtime
-from pygada_runtime import BinaryStream
 
 
 def _json(argv):
@@ -40,15 +39,14 @@ def _json(argv):
 
         # Indentation
         gada lang.json --indent 4
-        
-    """
-    def work(args):
-        s = BinaryStream(sys.stdin, sys.stdout)
 
-        if not args.input or args.input == '-':
+    """
+
+    def work(args):
+        if not args.input or args.input == "-":
             # Read data from stdin
             data = sys.stdin.read()
-            data = data[data.index("{"):data.rindex("}")+1]
+            data = data[data.index("{") : data.rindex("}") + 1]
             data = json.loads(data)
         else:
             # Read data from file
@@ -57,8 +55,8 @@ def _json(argv):
 
         if args.chain_output:
             # Pass to other nodes
-            s.write_json(data)
-        elif args.output and args.output != '-':
+            pygada_runtime.write_json(sys.stdout, data, indent=args.indent)
+        elif args.output and args.output != "-":
             # Write to file
             with open(args.output, "w+") as f:
                 f.write(json.dumps(data, indent=args.indent))

@@ -23,7 +23,7 @@ exec(read("gadalang_lang/__version__.py"), pkg_info)
 
 
 setup(
-    name="gadalang-lang",
+    name="gadalang_lang",
     version=pkg_info["__version__"],
     author=pkg_info["__author__"],
     author_email=pkg_info["__author_email__"],
@@ -32,18 +32,12 @@ setup(
         "Bug Tracker": "https://github.com/gadalang/gadalang-lang/issues",
         "Source Code": "https://github.com/gadalang/gadalang-lang/",
     },
-    description="Collection of nodes for image processing with gada",
+    description="Collection of lang nodes for gada",
     long_description=readme(),
     long_description_content_type="text/markdown",
     packages=find_packages(exclude=["tests"]),
-    install_requires=["pillow", "binaryiotools"],
-    test_suite="test",
-    tests_require=["nose", "nose-cover3"],
-    package_data={
-        'gadalang_lang': ['config.yml']
-    },
     include_package_data=True,
-    zip_safe=True,
+    zip_safe=False,
     python_requires=">=3.7",
     classifiers=[
         "Development Status :: 3 - Alpha",

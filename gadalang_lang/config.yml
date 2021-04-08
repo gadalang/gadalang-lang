@@ -3,3 +3,22 @@ nodes:
   json:
     module: gadalang_lang.nodes
     entrypoint: _json
+    inputs:
+    - id: in
+      type: exec
+    - id: in_data
+      type: str
+      help: input data
+    - id: in_file
+      type: str
+      help: input file
+    - id: out_file
+      type: str
+      help: output file
+    outputs:
+    - id: out
+      type: exec
+    - id: out_data
+      type: str
+      help: output data
+
