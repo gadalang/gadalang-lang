@@ -10,6 +10,7 @@ __all__ = [
     "run",
     "load_json",
     "load_yaml",
+    "tmp_file",
 ]
 import os
 import unittest
@@ -113,6 +114,10 @@ def load_yaml(filename: str) -> dict:
 
 @pytest.fixture
 def tmp_file():
+    """Create a temporary file and delete it afterward.
+
+    :return: temporary file
+    """
     f = tempfile.NamedTemporaryFile(delete=False)
     yield f
     f.close()

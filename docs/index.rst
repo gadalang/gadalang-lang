@@ -49,6 +49,7 @@ Contents:
    :maxdepth: 2
 
    api
+   testutils
 
 Indices and tables
 ==================
