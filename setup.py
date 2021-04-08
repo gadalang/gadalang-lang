@@ -36,7 +36,7 @@ setup(
     long_description=readme(),
     long_description_content_type="text/markdown",
     packages=find_packages(exclude=["tests"]),
-    include_package_data=True,
+    package_data={"gadalang_lang": ["config.yml"]},
     zip_safe=False,
     python_requires=">=3.7",
     classifiers=[
