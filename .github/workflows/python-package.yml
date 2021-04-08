@@ -12,10 +12,11 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
+        os: [ubuntu-latest]
         python-version: ['3.7', '3.8', '3.9']
 
     steps:
@@ -28,11 +29,14 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install -e .
-        python -m pip install wheel "coverage>=4.0,<4.4"
+        python -m pip install wheel tox tox-gh-actions
     - name: Test with coverage
       run: |
-        coverage run --source=gadalang_lang -m unittest discover -b 
-    - if: matrix.python-version == '3.8'
+        mkdir -p .local/share/gada
+        tox -e begin
+        tox
+        tox -e end
+    - if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.8'
       name: Publish coverage
       uses: codecov/codecov-action@v1
       with:
