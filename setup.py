@@ -37,6 +37,11 @@ setup(
     long_description_content_type="text/markdown",
     packages=find_packages(exclude=["tests"]),
     package_data={"gadalang_lang": ["config.yml"]},
+    entry_points={
+        "gadalang.nodes": [
+            "lang = gadalang_lang._plugin",
+        ]
+    },
     zip_safe=False,
     python_requires=">=3.7",
     classifiers=[
